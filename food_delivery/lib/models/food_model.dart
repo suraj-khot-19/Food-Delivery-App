@@ -21,12 +21,10 @@ enum FoodCategories {
   misal,
   burger,
   salads,
-  sides,
-  deserts,
   drinks,
-  snack,
+  snacks,
   breakfast,
-  sweet,
+  sweets,
   rice,
 }
 
