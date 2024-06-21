@@ -8,6 +8,7 @@ class MySliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       expandedHeight: 340,
       title: const Text("S Dinner"),
       floating: false,

@@ -13,7 +13,9 @@ class _HomeScreenState extends State<HomeScreen>
   late TabController tabController;
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    //passsing food category lenght
+    tabController =
+        TabController(length: FoodCategories.values.length, vsync: this);
     super.initState();
   }
 
@@ -21,6 +23,30 @@ class _HomeScreenState extends State<HomeScreen>
   void dispose() {
     tabController.dispose();
     super.dispose();
+  }
+
+//showing food items
+//filter
+  List<Food> filterItemsOfeach(FoodCategories categorys, List<Food> foodmenue) {
+    return foodmenue.where((food) => food.foodCategory == categorys).toList();
+  }
+
+//return list
+  List<Widget> getFood(List<Food> foodMenue) {
+    return FoodCategories.values.map((category) {
+      List<Food> categoryMenue = filterItemsOfeach(category, foodMenue);
+      return ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+        itemCount: categoryMenue.length,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return MyFoodTile(
+            food: categoryMenue[index],
+            onTap: () {},
+          );
+        },
+      );
+    }).toList();
   }
 
   @override
@@ -49,27 +75,11 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
         ],
-        body: TabBarView(
-          children: [
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const Text("1");
-              },
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const Text("2");
-              },
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const Text("3");
-              },
-            ),
-          ],
+        body: Consumer<Restorant>(
+          builder: (context, restorent, child) => TabBarView(
+            controller: tabController,
+            children: getFood(restorent.menue),
+          ),
         ),
       ),
     );

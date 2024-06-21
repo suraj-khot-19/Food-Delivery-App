@@ -1,6 +1,6 @@
-import 'package:food_delivery/models/food_model.dart';
+import 'package:food_delivery/utils/exports.dart';
 
-class Restorant {
+class Restorant extends ChangeNotifier {
 //list of food menue
   final List<Food> _menue = [
     //misal
@@ -91,20 +91,6 @@ class Restorant {
       ],
     ),
 
-    //puran poli
-    Food(
-      name: "Puran Poli",
-      description:
-          "Puran Poli पुरण पोळी, is a traditional Marathi sweetss flatbread. It is made during festivals and special occasions. The filling, known as 'Puran', is made from chana dal and jaggery, while the outer covering is made from wheat flour. It is typically served with ghee or milk.",
-      imgPath: "assets/puranPoli/pp1.webp",
-      price: 100,
-      foodCategory: FoodCategories.sweets,
-      availableFoodAddOn: [
-        FoodAddon(name: "Ghee", price: 20),
-        FoodAddon(name: "Milk", price: 10),
-      ],
-    ),
-
 //"Vada Pav"
     Food(
       name: "Vada Pav",
@@ -120,42 +106,12 @@ class Restorant {
       ],
     ),
 
-//"Sabudana Khichdi"
-    Food(
-      name: "Sabudana Khichdi",
-      description:
-          "Sabudana Khichdi साबुदाणा खिचड़ी, is a light, spiced dish made from soaked sabudana (tapioca pearls), peanuts, and potatoes. It is often consumed during fasting days. The dish is known for its unique texture and flavorful taste.",
-      imgPath: "assets/shabudanakhichadi/s1.webp",
-      price: 80,
-      foodCategory: FoodCategories.breakfast,
-      availableFoodAddOn: [
-        FoodAddon(name: "Peanuts", price: 15),
-        FoodAddon(name: "Yogurt", price: 10),
-        FoodAddon(name: "Lemon", price: 5),
-      ],
-    ),
-
-//  "Thalipeeth"
-    Food(
-      name: "Thalipeeth",
-      description:
-          "Thalipeeth थालीपीठ, is a multigrain pancake made from a mixture of different flours, spices, and vegetables. It is a healthy and filling dish often served with butter or yogurt. It is a staple in many Maharashtrian households.",
-      imgPath: "assets/thalipit/tp1.webp",
-      price: 90,
-      foodCategory: FoodCategories.breakfast,
-      availableFoodAddOn: [
-        FoodAddon(name: "Butter", price: 10),
-        FoodAddon(name: "Yogurt", price: 15),
-        FoodAddon(name: "Pickle", price: 5),
-      ],
-    ),
-
 // "Pav Bhaji"
     Food(
       name: "Pav Bhaji",
       description:
           "Pav Bhaji पाव भाजी, is a popular street food consisting of a spicy vegetable mash served with soft bread rolls. The bhaji (vegetable mash) is made with a variety of vegetables and flavored with a special blend of spices. It is often garnished with butter, chopped onions, and a squeeze of lemon.",
-      imgPath: "assets/pavBhaji/pb1.webp",
+      imgPath: "assets/paavBhaji/pb1.webp",
       price: 110,
       foodCategory: FoodCategories.snacks,
       availableFoodAddOn: [
@@ -166,82 +122,12 @@ class Restorant {
       ],
     ),
 
-    //rice
-    Food(
-      name: "Chicken Biryani",
-      description:
-          "Chicken Biryani चिकन बिरयानी, is a flavorful and aromatic rice dish made with basmati rice, tender chicken pieces, spices, and herbs. It is often garnished with fried onions and served with raita or a side of yogurt.",
-      imgPath: "assets/rice/rice1.webp",
-      price: 180,
-      foodCategory: FoodCategories.rice,
-      availableFoodAddOn: [
-        FoodAddon(name: "Extra Chicken", price: 50),
-        FoodAddon(name: "Raita", price: 20),
-        FoodAddon(name: "Boiled Egg", price: 15),
-        FoodAddon(name: "salads", price: 10),
-      ],
-    ),
-    Food(
-      name: "Vegetable Pulao",
-      description:
-          "Vegetable Pulao वेजिटेबल पुलाव, is a colorful and healthy rice dish made with basmati rice and a variety of vegetables like carrots, peas, beans, and bell peppers, seasoned with aromatic spices and herbs.",
-      imgPath: "assets/rice/rice2.webp",
-      price: 150,
-      foodCategory: FoodCategories.rice,
-      availableFoodAddOn: [
-        FoodAddon(name: "Raita", price: 20),
-        FoodAddon(name: "Papad", price: 10),
-        FoodAddon(name: "Pickle", price: 5),
-      ],
-    ),
-    Food(
-      name: "Jeera Rice",
-      description:
-          "Jeera Rice जीरा राइस, is a simple yet flavorful rice dish made with basmati rice and tempered with cumin seeds. It is a perfect accompaniment to a variety of Indian curries and gravies.",
-      imgPath: "assets/rice/rice3.webp",
-      price: 100,
-      foodCategory: FoodCategories.rice,
-      availableFoodAddOn: [
-        FoodAddon(name: "Dal Tadka", price: 40),
-        FoodAddon(name: "Papad", price: 10),
-        FoodAddon(name: "Pickle", price: 5),
-      ],
-    ),
-    Food(
-      name: "Mutton Biryani",
-      description:
-          "Mutton Biryani मटन बिरयानी, is a rich and flavorful rice dish made with basmati rice, tender pieces of mutton, and a blend of spices and herbs. It is often garnished with fried onions and served with raita or a side of yogurt.",
-      imgPath: "assets/rice/rice4.webp",
-      price: 200,
-      foodCategory: FoodCategories.rice,
-      availableFoodAddOn: [
-        FoodAddon(name: "Extra Mutton", price: 70),
-        FoodAddon(name: "Raita", price: 20),
-        FoodAddon(name: "Boiled Egg", price: 15),
-        FoodAddon(name: "salads", price: 10),
-      ],
-    ),
-    Food(
-      name: "Fried Rice",
-      description:
-          "Fried Rice फ्राइड राइस, is a popular rice dish made with cooked rice stir-fried with vegetables, eggs, and soy sauce. It can be customized with different types of meat or seafood for added flavor.",
-      imgPath: "assets/rice/rice5.jpg",
-      price: 120,
-      foodCategory: FoodCategories.rice,
-      availableFoodAddOn: [
-        FoodAddon(name: "Extra Egg", price: 15),
-        FoodAddon(name: "Chicken", price: 40),
-        FoodAddon(name: "Prawns", price: 50),
-        FoodAddon(name: "Soy Sauce", price: 5),
-      ],
-    ),
-
     //salads
     Food(
       name: "Greek salads",
       description:
           "Greek salads is a fresh and flavorful salads made with cucumbers, tomatoes, red onions, Kalamata olives, and feta cheese, all tossed in a tangy lemon-oregano vinaigrette. It's a perfect side dish or light meal.",
-      imgPath: "assets/salads/greek_salads.png",
+      imgPath: "assets/salad/s1.jpeg",
       price: 120,
       foodCategory: FoodCategories.salads,
       availableFoodAddOn: [
@@ -255,7 +141,7 @@ class Restorant {
       name: "Caesar salads",
       description:
           "Caesar salads is a classic salads featuring romaine lettuce, croutons, and Parmesan cheese, all tossed in a creamy Caesar dressing. It's often topped with grilled chicken or shrimp for added protein.",
-      imgPath: "assets/salads/caesar_salads.png",
+      imgPath: "assets/salad/s2.jpeg",
       price: 130,
       foodCategory: FoodCategories.salads,
       availableFoodAddOn: [
@@ -269,7 +155,7 @@ class Restorant {
       name: "Caprese salads",
       description:
           "Caprese salads is a simple yet delicious salads made with fresh mozzarella, ripe tomatoes, and fresh basil leaves, drizzled with balsamic glaze and olive oil. It's a perfect appetizer or side dish.",
-      imgPath: "assets/salads/caprese_salads.png",
+      imgPath: "assets/salad/s3.jpeg",
       price: 110,
       foodCategory: FoodCategories.salads,
       availableFoodAddOn: [
@@ -279,12 +165,11 @@ class Restorant {
         FoodAddon(name: "Balsamic Glaze", price: 10),
       ],
     ),
-
     Food(
       name: "Quinoa salads",
       description:
           "Quinoa salads is a nutritious and hearty salads made with cooked quinoa, cherry tomatoes, cucumbers, red onions, and bell peppers, all tossed in a lemon vinaigrette. It's a great option for a healthy meal.",
-      imgPath: "assets/salads/quinoa_salads.png",
+      imgPath: "assets/salad/s4.jpeg",
       price: 140,
       foodCategory: FoodCategories.salads,
       availableFoodAddOn: [
@@ -294,12 +179,11 @@ class Restorant {
         FoodAddon(name: "Chickpeas", price: 15),
       ],
     ),
-
     Food(
       name: "Cobb salads",
       description:
           "Cobb salads is a hearty salads featuring a mix of greens, topped with grilled chicken, crispy bacon, hard-boiled eggs, avocado, tomatoes, and blue cheese, all served with a tangy vinaigrette.",
-      imgPath: "assets/salads/cobb_salads.png",
+      imgPath: "assets/salad/s5.jpeg",
       price: 150,
       foodCategory: FoodCategories.salads,
       availableFoodAddOn: [
@@ -315,7 +199,7 @@ class Restorant {
       name: "Mango Lassi",
       description:
           "Mango Lassi is a popular Indian yogurt-based drinks made with fresh mango pulp, yogurt, and a touch of sugar. It's a refreshing and creamy beverage, perfect for cooling down on a hot day.",
-      imgPath: "assets/drinkss/mango_lassi.png",
+      imgPath: "assets/drinks/d1.jpg",
       price: 60,
       foodCategory: FoodCategories.drinks,
       availableFoodAddOn: [
@@ -328,7 +212,7 @@ class Restorant {
       name: "Masala Chai",
       description:
           "Masala Chai is a traditional Indian spiced tea made with black tea, milk, and a blend of aromatic spices like cardamom, cinnamon, ginger, and cloves. It's a comforting and invigorating drinks.",
-      imgPath: "assets/drinkss/masala_chai.png",
+      imgPath: "assets/drinks/d2.jpg",
       price: 40,
       foodCategory: FoodCategories.drinks,
       availableFoodAddOn: [
@@ -341,7 +225,7 @@ class Restorant {
       name: "Cold Coffee",
       description:
           "Cold Coffee is a chilled and creamy coffee beverage made with brewed coffee, milk, sugar, and ice, blended to perfection. It's an ideal drinks for coffee lovers on a warm day.",
-      imgPath: "assets/drinkss/cold_coffee.png",
+      imgPath: "assets/drinks/d3.jpg",
       price: 70,
       foodCategory: FoodCategories.drinks,
       availableFoodAddOn: [
@@ -354,7 +238,7 @@ class Restorant {
       name: "Lemonade",
       description:
           "Lemonade is a classic, refreshing drinks made with freshly squeezed lemon juice, water, and sugar. It's a perfect thirst quencher for hot summer days.",
-      imgPath: "assets/drinkss/lemonade.png",
+      imgPath: "assets/drinks/d4.jpeg",
       price: 50,
       foodCategory: FoodCategories.drinks,
       availableFoodAddOn: [
@@ -367,7 +251,7 @@ class Restorant {
       name: "Iced Tea",
       description:
           "Iced Tea is a chilled tea beverage, often flavored with lemon or peach, and sweetsened to taste. It's a refreshing and light drinks, perfect for any time of the day.",
-      imgPath: "assets/drinkss/iced_tea.png",
+      imgPath: "assets/drinks/d5.jpg",
       price: 60,
       foodCategory: FoodCategories.drinks,
       availableFoodAddOn: [
@@ -377,4 +261,18 @@ class Restorant {
       ],
     ),
   ];
+
+  //getter
+  List<Food> get menue => _menue;
+  //operations
+//1. add to cart
+//2. remove from
+//3. get total price
+//4. get total numbers of items in cart
+//5. clear cart
+
+  //helpers
+//geneerate receipt
+//format doubke value into money
+//format list of add on into string summery
 }

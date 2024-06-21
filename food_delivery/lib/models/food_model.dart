@@ -23,9 +23,6 @@ enum FoodCategories {
   salads,
   drinks,
   snacks,
-  breakfast,
-  sweets,
-  rice,
 }
 
 //food add-on

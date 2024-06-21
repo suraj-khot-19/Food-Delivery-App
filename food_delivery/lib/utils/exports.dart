@@ -13,9 +13,9 @@ export 'package:food_delivery/widgets/my_current_address.dart';
 export 'package:food_delivery/widgets/my_sliver_app_bar.dart';
 export 'package:food_delivery/widgets/my_description.dart';
 export 'package:food_delivery/widgets/my_tab_bar.dart';
-// export
-// export
-// export
+export 'package:food_delivery/models/food_model.dart';
+export 'package:food_delivery/widgets/my_food_tile.dart';
+export 'package:food_delivery/models/restorant_model.dart';
 // export
 // export
 // export

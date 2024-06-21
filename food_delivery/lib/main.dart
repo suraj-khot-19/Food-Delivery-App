@@ -1,12 +1,19 @@
 import 'package:food_delivery/utils/exports.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [
+      //theme
+      ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+      ),
+      //restorent
+      ChangeNotifierProvider(
+        create: (context) => Restorant(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
