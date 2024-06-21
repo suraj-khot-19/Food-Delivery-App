@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final TextEditingController controller;
@@ -19,14 +19,12 @@ class CustomTextFeild extends StatelessWidget {
         obscureText: obsecureText,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+          hintStyle: TextStyle(color: AppColors.primary(context)),
           focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
+            borderSide: BorderSide(color: AppColors.primary(context)),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            borderSide: BorderSide(color: AppColors.ternary(context)),
           ),
         ),
       ),

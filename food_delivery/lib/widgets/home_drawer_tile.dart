@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 class HomeDrawerTile extends StatelessWidget {
   final String title;
@@ -19,12 +19,11 @@ class HomeDrawerTile extends StatelessWidget {
         child: ListTile(
           title: Text(
             title,
-            style:
-                TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+            style: TextStyle(color: AppColors.inversePrimary(context)),
           ),
           leading: Icon(
             icon,
-            color: Theme.of(context).colorScheme.inversePrimary,
+            color: AppColors.inversePrimary(context),
           ),
         ),
       ),

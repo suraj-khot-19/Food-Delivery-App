@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery/widgets/home_drawer.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

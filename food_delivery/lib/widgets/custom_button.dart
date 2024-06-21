@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
@@ -11,18 +11,17 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 25),
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
+          color: AppColors.secoundry(context),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-              width: 1, color: Theme.of(context).secondaryHeaderColor),
+          border: Border.all(width: 1, color: AppColors.secoundry(context)),
         ),
         child: Center(
           child: Text(
             label,
             style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color: AppColors.inversePrimary(context),
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

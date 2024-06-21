@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery/screens/login_screen.dart';
-import 'package:food_delivery/themes/theme_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 void main() {
   runApp(

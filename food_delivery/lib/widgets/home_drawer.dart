@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/screens/setting_screen.dart';
+import 'package:food_delivery/utils/app_colors.dart';
 import 'package:food_delivery/widgets/home_drawer_tile.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: AppColors.surface(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -18,13 +19,13 @@ class HomeDrawer extends StatelessWidget {
           Icon(
             Icons.lock_open_rounded,
             size: 80,
-            color: Theme.of(context).colorScheme.inversePrimary,
+            color: AppColors.inversePrimary(context),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 30),
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Divider(
-              color: Theme.of(context).colorScheme.secondary,
+              color: AppColors.secoundry(context),
             ),
           ),
           HomeDrawerTile(

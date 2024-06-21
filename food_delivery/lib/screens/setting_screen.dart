@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:food_delivery/themes/theme_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:food_delivery/utils/exports.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -14,6 +12,7 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.surface(context),
       appBar: AppBar(
         title: const Text("setting"),
       ),
@@ -41,6 +40,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                 ),
                 CupertinoSwitch(
+                  activeColor: Colors.cyan,
                   value: Provider.of<ThemeProvider>(context, listen: false)
                       .isDarkTheme,
                   onChanged: (value) {
