@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:food_delivery/models/cart_item.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class Restorant extends ChangeNotifier {
@@ -264,12 +266,77 @@ class Restorant extends ChangeNotifier {
 
   //getter
   List<Food> get menue => _menue;
-  //operations
+  List<CartItem> get cart => _cart;
+
+  //******************   operations ***************************
+
+//user cart
+  final List<CartItem> _cart = [];
 //1. add to cart
+  void addToCart(Food food, List<FoodAddon> selectedAddons) {
+    //cart alredy with same food
+    CartItem? cartItem = _cart.firstWhereOrNull((items) {
+      //checking if samee food
+      bool isSameFood = items.food == food;
+      //checking if same adddons
+      bool isSameAddon =
+          const ListEquality().equals(items.selectedAddon, selectedAddons);
+      return isSameAddon && isSameFood;
+    });
+    //if item alredy exist=>just increase quantity
+    if (cartItem != null) {
+      cartItem.quantity++;
+    }
+    //else add item to the cart
+    else {
+      _cart.add(CartItem(food: food, selectedAddon: selectedAddons));
+    }
+    notifyListeners();
+  }
+
 //2. remove from
+  void removeFromCart(CartItem cartItem) {
+    int cartIndex = _cart.indexOf(cartItem);
+    //checking never negative
+    if (cartIndex != -1) {
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+    notifyListeners();
+  }
+
 //3. get total price
+  double totalPrice() {
+    double total = 0.0;
+    for (CartItem cartItem in _cart) {
+      //item total
+      double itemTotal = cartItem.food.price;
+      //checking addons
+      for (FoodAddon foodAddon in cartItem.selectedAddon) {
+        itemTotal += foodAddon.price;
+      }
+      total += itemTotal * cartItem.quantity;
+    }
+    return total;
+  }
+
 //4. get total numbers of items in cart
+  int getTotalItemCount() {
+    int itemCount = 0;
+    for (CartItem cartItem in _cart) {
+      itemCount += cartItem.quantity;
+    }
+    return itemCount;
+  }
+
 //5. clear cart
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
+  }
 
   //helpers
 //geneerate receipt

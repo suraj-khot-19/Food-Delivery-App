@@ -1,3 +1,4 @@
+import 'package:food_delivery/screens/food_description.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -42,7 +43,15 @@ class _HomeScreenState extends State<HomeScreen>
         itemBuilder: (context, index) {
           return MyFoodTile(
             food: categoryMenue[index],
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      FoodDescription(food: categoryMenue[index]),
+                ),
+              );
+            },
           );
         },
       );

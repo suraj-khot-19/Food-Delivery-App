@@ -1,3 +1,4 @@
+import 'package:food_delivery/screens/cart_screen.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class MySliverAppBar extends StatelessWidget {
@@ -8,14 +9,20 @@ class MySliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      automaticallyImplyLeading: false,
+      scrolledUnderElevation: 20,
       expandedHeight: 340,
       title: const Text("S Dinner"),
       floating: false,
       pinned: true,
       actions: [
         // cart butn
-        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+        IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const CartScreen();
+              }));
+            },
+            icon: const Icon(Icons.shopping_cart))
       ],
       backgroundColor: AppColors.surface(context),
       foregroundColor: AppColors.inversePrimary(context),
