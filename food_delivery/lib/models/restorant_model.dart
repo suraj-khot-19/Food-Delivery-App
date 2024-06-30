@@ -287,7 +287,7 @@ class Restorant extends ChangeNotifier {
     if (cartItem != null) {
       cartItem.quantity++;
     }
-    //else add item to the cart
+    //else add new item to the cart
     else {
       _cart.add(CartItem(food: food, selectedAddon: selectedAddons));
     }
@@ -301,7 +301,9 @@ class Restorant extends ChangeNotifier {
     if (cartIndex != -1) {
       if (_cart[cartIndex].quantity > 1) {
         _cart[cartIndex].quantity--;
-      } else {
+      } else
+      //if 1 remove from cart
+      {
         _cart.removeAt(cartIndex);
       }
     }

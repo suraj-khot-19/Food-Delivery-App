@@ -9,8 +9,8 @@ class MySliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      scrolledUnderElevation: 20,
       expandedHeight: 340,
+      collapsedHeight: 80,
       title: const Text("S Dinner"),
       floating: false,
       pinned: true,
