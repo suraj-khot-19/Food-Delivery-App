@@ -1,3 +1,4 @@
+import 'package:food_delivery/screens/payment_screen.dart';
 import 'package:food_delivery/utils/exports.dart';
 import 'package:food_delivery/widgets/my_cart_tile.dart';
 
@@ -18,13 +19,27 @@ class _CartScreenState extends State<CartScreen> {
 
         //ui
         return Scaffold(
-          // backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.surface(context),
           appBar: AppBar(
             title: const Text("Cart"),
             backgroundColor: Colors.transparent,
             actions: [
               IconButton(
-                  onPressed: () {
+                onPressed: () {
+                  if (userCart.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: AppColors.ternary(context),
+                        content: Text(
+                          "Your Cart Is empty, Buy A product too place an order",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.inversePrimary(context),
+                          ),
+                        ),
+                      ),
+                    );
+                  } else {
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -45,8 +60,12 @@ class _CartScreenState extends State<CartScreen> {
                             ],
                           );
                         });
-                  },
-                  icon: const Icon(Icons.delete_forever_outlined))
+                  }
+                },
+                icon: const Icon(
+                  Icons.delete_forever_outlined,
+                ),
+              ),
             ],
           ),
           body: Column(
@@ -75,7 +94,30 @@ class _CartScreenState extends State<CartScreen> {
               ),
               CustomButton(
                 label: "Go to checkout",
-                onTap: () {},
+                onTap: () {
+                  if (userCart.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PaymentScreen(),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        elevation: 3,
+                        backgroundColor: AppColors.ternary(context),
+                        content: Text(
+                          "Your Cart Is empty.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.inversePrimary(context),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
               ),
               const AddVerticleSpace(height: 25),
             ],

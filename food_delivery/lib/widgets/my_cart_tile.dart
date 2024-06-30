@@ -1,4 +1,5 @@
 import 'package:food_delivery/models/cart_item.dart';
+import 'package:food_delivery/screens/food_description.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class MyCartTile extends StatelessWidget {
@@ -9,119 +10,137 @@ class MyCartTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Restorant>(
       builder: (context, restorant, child) {
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: AppColors.secoundry(context),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //image
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      cartItem.food.imgPath,
-                      height: 100,
-                      width: 100,
-                      fit: BoxFit.cover,
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FoodDescription(food: cartItem.food),
+              ),
+            );
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.secoundry(context),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    //image
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        cartItem.food.imgPath,
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  const AddHorizontalSpace(width: 10),
-                  //name
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(cartItem.food.name),
-                      Text(cartItem.food.price.toString()),
-                    ],
-                  ),
-                  const Spacer(),
-                  //icrement decrement
-                  Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.ternary(context),
-                        borderRadius: BorderRadius.circular(8)),
-                    padding: const EdgeInsets.all(8),
-                    margin: const EdgeInsets.only(right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        //decrease
-                        InkWell(
-                          onTap: () {
-                            restorant.removeFromCart(cartItem);
-                          },
-                          child: const Icon(
-                            Icons.remove,
-                            size: 20,
+                    const AddHorizontalSpace(width: 10),
+                    //name
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            cartItem.food.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                        //quantity
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: SizedBox(
-                            width: 20,
-                            child: Center(
-                              child: Text(
-                                cartItem.quantity.toString(),
+                          Text("${cartItem.food.price} Rs"),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    //icrement decrement
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.ternary(context),
+                          borderRadius: BorderRadius.circular(8)),
+                      padding:
+                          const EdgeInsets.only(top: 8, bottom: 8, right: 8),
+                      margin: const EdgeInsets.only(right: 6),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          //decrease
+                          InkWell(
+                            onTap: () {
+                              restorant.removeFromCart(cartItem);
+                            },
+                            child: const Icon(
+                              Icons.remove,
+                              size: 20,
+                            ),
+                          ),
+                          //quantity
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: 20,
+                              child: Center(
+                                child: Text(
+                                  cartItem.quantity.toString(),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        //increase
-                        InkWell(
-                          onTap: () {
-                            restorant.addToCart(
-                              cartItem.food,
-                              cartItem.selectedAddon,
-                            );
-                          },
-                          child: const Icon(
-                            Icons.add,
-                            size: 20,
+                          //increase
+                          InkWell(
+                            onTap: () {
+                              restorant.addToCart(
+                                cartItem.food,
+                                cartItem.selectedAddon,
+                              );
+                            },
+                            child: const Icon(
+                              Icons.add,
+                              size: 20,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const AddVerticleSpace(height: 10),
-              //addons in list
-              SizedBox(
-                height: cartItem.selectedAddon.isEmpty ? 0 : 60,
-                child: ListView.builder(
-                  itemCount: cartItem.selectedAddon.length,
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 10.0),
-                      child: FilterChip(
-                        label: Row(
-                          children: [
-                            Text(cartItem.selectedAddon[index].name),
-                            Text(
-                                "(${cartItem.selectedAddon[index].price.toString()})"),
-                          ],
-                        ),
-                        onSelected: (value) {},
-                        labelStyle: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.inversePrimary(context),
-                        ),
-                        backgroundColor: AppColors.secoundry(context),
+                        ],
                       ),
-                    );
-                  },
+                    ),
+                  ],
                 ),
-              )
-            ],
+                const AddVerticleSpace(height: 10),
+                //addons in list
+                SizedBox(
+                  height: cartItem.selectedAddon.isEmpty ? 0 : 60,
+                  child: ListView.builder(
+                    itemCount: cartItem.selectedAddon.length,
+                    scrollDirection: Axis.horizontal,
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, top: 10),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: FilterChip(
+                          label: Row(
+                            children: [
+                              Text(cartItem.selectedAddon[index].name),
+                              Text(
+                                  "(${restorant.formatMoney(cartItem.selectedAddon[index].price)})"),
+                            ],
+                          ),
+                          onSelected: (value) {},
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.inversePrimary(context),
+                          ),
+                          backgroundColor: AppColors.secoundry(context),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },

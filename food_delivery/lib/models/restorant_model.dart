@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:food_delivery/models/cart_item.dart';
 import 'package:food_delivery/utils/exports.dart';
+import 'package:intl/intl.dart';
 
 class Restorant extends ChangeNotifier {
 //list of food menue
@@ -328,7 +329,7 @@ class Restorant extends ChangeNotifier {
 //4. get total numbers of items in cart
   int getTotalItemCount() {
     int itemCount = 0;
-    for (CartItem cartItem in _cart) {
+    for (CartItem cartItem in cart) {
       itemCount += cartItem.quantity;
     }
     return itemCount;
@@ -342,6 +343,48 @@ class Restorant extends ChangeNotifier {
 
   //helpers
 //geneerate receipt
+  String receipt() {
+    final receipt = StringBuffer();
+    receipt.writeln("Here is Your Receipt");
+    receipt.writeln();
+
+    //formating data
+    String formatdate =
+        DateFormat('dd/MM/yyyy HH:mm:ss').format(DateTime.now());
+    receipt.writeln(formatdate);
+    receipt.writeln();
+    receipt.writeln("____________");
+    receipt.writeln();
+
+    for (int i = 0; i < cart.length; i++) {
+      //adding detals
+      receipt.writeln(
+          "${i + 1}) ${cart[i].quantity} X ${cart[i].food.name} - ${formatMoney(cart[i].food.price)}");
+
+      //adding addons
+      if (cart[i].selectedAddon.isNotEmpty) {
+        receipt.writeln("Add-ons: ${formatingAddons(cart[i].selectedAddon)}");
+        receipt.writeln();
+      }
+    }
+    receipt.writeln();
+    receipt.writeln("______________");
+    receipt.writeln("");
+    //items price
+    receipt.writeln("Total Items : ${getTotalItemCount()}");
+    receipt.writeln("Total Price : ${formatMoney(totalPrice())}");
+    return receipt.toString();
+  }
+
 //format doubke value into money
+  String formatMoney(double price) {
+    return "${price.toStringAsFixed(2)} Rs";
+  }
+
 //format list of add on into string summery
+  String formatingAddons(List<FoodAddon> addon) {
+    return addon
+        .map((addon) => "${addon.name} (${formatMoney(addon.price)})")
+        .join(", ");
+  }
 }
