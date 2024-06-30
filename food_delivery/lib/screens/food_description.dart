@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class FoodDescription extends StatefulWidget {
@@ -44,9 +45,28 @@ class _FoodDescriptionState extends State<FoodDescription> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                //img
-                Image.asset(
-                  widget.food.imgPath,
+                //crousal
+                CarouselSlider(
+                  items: widget.food.foodImages
+                      .map(
+                        (images) => Builder(
+                          builder: (context) {
+                            return Image.asset(
+                              images,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            );
+                          },
+                        ),
+                      )
+                      .toList(),
+                  options: CarouselOptions(
+                    autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                    autoPlayInterval: const Duration(milliseconds: 8),
+                    height: 500,
+                    viewportFraction: 1,
+                    autoPlay: true,
+                  ),
                 ),
                 //discripitoon
                 Padding(

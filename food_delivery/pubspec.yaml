@@ -39,6 +39,7 @@ dependencies:
   collection:
   flutter_credit_card :
   intl:
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
