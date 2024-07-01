@@ -16,13 +16,27 @@ class MySliverAppBar extends StatelessWidget {
       pinned: true,
       actions: [
         // cart butn
-        IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+        IconButton(onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
                 return const CartScreen();
-              }));
-            },
-            icon: const Icon(Icons.shopping_cart))
+              },
+            ),
+          );
+        },
+            //badge to display cart length
+            icon: Consumer<Restorant>(
+          builder: (context, value, child) {
+            return Badge(
+              label: Text(value.cart.length.toString()),
+              child: const Icon(
+                Icons.shopping_cart,
+              ),
+            );
+          },
+        )),
       ],
       backgroundColor: AppColors.surface(context),
       foregroundColor: AppColors.inversePrimary(context),

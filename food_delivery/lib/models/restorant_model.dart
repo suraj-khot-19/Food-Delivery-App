@@ -417,9 +417,9 @@ class Restorant extends ChangeNotifier {
 
 //drinkss
     Food(
-        name: "Mango Lassi",
+        name: " Healthy and Tasty Gulacha Chaha",
         description:
-            "Mango Lassi is a popular Indian yogurt-based drinks made with fresh mango pulp, yogurt, and a touch of sugar. It's a refreshing and creamy beverage, perfect for cooling down on a hot day.",
+            "Healthy and Tasty Gulacha Chaha. Gulacha chaha is a very easy and simple recipe. The main problem while making gulacha chaha is the milk gets spoilt. You will get few tips",
         imgPath: "assets/drinks/d1.jpg",
         price: 60,
         foodCategory: FoodCategories.drinks,
