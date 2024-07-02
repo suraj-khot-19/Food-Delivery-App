@@ -31,5 +31,14 @@
     </td>
   </tr>
 
+  <tr>
+    <td>
+      <img src="https://github.com/suraj-khot-19/img/blob/main/ff20_dark.jpg" alt="img">
+    </td>
+    <td>
+      <img src="https://github.com/suraj-khot-19/img/blob/main/ff20_light.jpg" alt="img">
+    </td>
+  </tr>
+
   
 </table>
