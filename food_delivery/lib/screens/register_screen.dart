@@ -78,16 +78,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                size: 100,
-                Icons.lock_open_rounded,
-                color: AppColors.inversePrimary(context),
+              SizedBox(
+                height: 170,
+                width: 170,
+                child: Image.asset(
+                  "assets/app4.png",
+                  fit: BoxFit.contain,
+                ),
               ),
-              const AddVerticleSpace(height: 25),
+              const AddVerticleSpace(height: 20),
               Text(
-                "Lets Create Account!",
+                "Let's Create Account!",
                 style: TextStyle(
                   color: AppColors.inversePrimary(context),
+                  fontWeight: FontWeight.w600,
                   fontSize: 16,
                 ),
               ),

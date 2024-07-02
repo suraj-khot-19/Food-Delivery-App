@@ -62,8 +62,7 @@ class _FoodDescriptionState extends State<FoodDescription> {
                       .toList(),
                   options: CarouselOptions(
                     autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-                    autoPlayInterval: const Duration(milliseconds: 8),
-                    height: 500,
+                    height: 600,
                     viewportFraction: 1,
                     autoPlay: true,
                   ),

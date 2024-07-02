@@ -58,16 +58,21 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                size: 100,
-                Icons.lock_open_rounded,
-                color: AppColors.inversePrimary(context),
+              Container(
+                margin: EdgeInsets.only(left: 30),
+                height: 140,
+                width: 140,
+                child: Image.asset(
+                  "assets/app1.png",
+                  fit: BoxFit.contain,
+                ),
               ),
               const AddVerticleSpace(height: 25),
               Text(
-                "Food Delivery App",
+                "S Food Delivery",
                 style: TextStyle(
                   color: AppColors.inversePrimary(context),
+                  fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
               ),

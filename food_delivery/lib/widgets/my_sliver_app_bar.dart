@@ -11,35 +11,37 @@ class MySliverAppBar extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 340,
       collapsedHeight: 80,
-      title: const Text("S Dinner"),
+      title: const Text("S Food Delivery"),
       floating: false,
       pinned: true,
       actions: [
         // cart butn
-        IconButton(onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return const CartScreen();
-              },
-            ),
-          );
-        },
-            //badge to display cart length
-            icon: Consumer<Restorant>(
-          builder: (context, value, child) {
-            return Badge(
-              backgroundColor: Colors.red,
-              textColor: AppColors.surface(context),
-              isLabelVisible: value.cart.isNotEmpty,
-              label: Text(value.cart.length.toString()),
-              child: const Icon(
-                Icons.shopping_cart,
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const CartScreen();
+                },
               ),
             );
           },
-        )),
+          //badge to display cart length
+          icon: Consumer<Restorant>(
+            builder: (context, value, child) {
+              return Badge(
+                backgroundColor: Colors.red,
+                textColor: AppColors.surface(context),
+                isLabelVisible: value.cart.isNotEmpty,
+                label: Text(value.cart.length.toString()),
+                child: const Icon(
+                  Icons.shopping_cart,
+                ),
+              );
+            },
+          ),
+        ),
       ],
       backgroundColor: AppColors.surface(context),
       foregroundColor: AppColors.inversePrimary(context),

@@ -37,3 +37,25 @@ class FoodAddon {
     required this.price,
   });
 }
+
+//card details
+class CradDetails {
+  String cardNumber;
+  String expiryDate;
+  String cardHolderName;
+  String cvvCode;
+  CradDetails({
+    required this.cardNumber,
+    required this.expiryDate,
+    required this.cardHolderName,
+    required this.cvvCode,
+  });
+  Map<String, dynamic> toMap() {
+    return {
+      'card holder name': cardHolderName,
+      'card number': cardNumber,
+      'expiry date': expiryDate,
+      'cvv code': cvvCode,
+    };
+  }
+}

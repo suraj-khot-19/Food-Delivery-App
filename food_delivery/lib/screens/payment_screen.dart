@@ -37,6 +37,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
               onCreditCardWidgetChange: (value) {},
               animationDuration: Durations.long1,
               isSwipeGestureEnabled: true,
+              cardBgColor: Color.fromARGB(255, 15, 93, 87),
+              enableFloatingCard: true,
+              cardType: CardType.rupay,
+              floatingConfig:
+                  FloatingConfig(isGlareEnabled: true, isShadowEnabled: true),
             ),
             CreditCardForm(
               cardNumber: cardNumber,
@@ -84,19 +89,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             },
                             child: const Text("Cancel"),
                           ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const PaymentProcessing();
-                                  },
-                                ),
+                          Consumer<Restorant>(
+                            builder: (context, restorant, child) {
+                              return TextButton(
+                                onPressed: () {
+                                  restorant.cardInfo.add(
+                                    CradDetails(
+                                      cardNumber: cardNumber,
+                                      expiryDate: expiryDate,
+                                      cardHolderName: cardHolderName,
+                                      cvvCode: cvvCode,
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const PaymentProcessing();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: const Text("Pay"),
                               );
                             },
-                            child: const Text("Pay"),
                           ),
                         ],
                       );

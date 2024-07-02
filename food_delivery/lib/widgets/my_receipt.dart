@@ -26,7 +26,9 @@ class MyReceipt extends StatelessWidget {
             ),
             child: Consumer<Restorant>(
               builder: (context, restorant, child) {
-                return Text(restorant.receipt());
+                return Text(
+                  restorant.receipt(),
+                );
               },
             ),
           ),

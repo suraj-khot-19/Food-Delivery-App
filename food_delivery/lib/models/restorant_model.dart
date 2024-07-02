@@ -1,9 +1,19 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:collection/collection.dart';
 import 'package:food_delivery/models/cart_item.dart';
 import 'package:food_delivery/utils/exports.dart';
 import 'package:intl/intl.dart';
 
 class Restorant extends ChangeNotifier {
+  //delivery address initaily
+  String _deliveryAddress = "kolhapur, Maharastra,416203";
+
+//user cart
+  final List<CartItem> _cart = [];
+
+  ///card details
+  List<CradDetails> _cardInfo = [];
 //list of food menue
   final List<Food> _menue = [
     //misal
@@ -531,11 +541,10 @@ class Restorant extends ChangeNotifier {
   //getter
   List<Food> get menue => _menue;
   List<CartItem> get cart => _cart;
-
+  String get deliveryAddress => _deliveryAddress;
+  List<CradDetails> get cardInfo => _cardInfo;
   //******************   operations ***************************
 
-//user cart
-  final List<CartItem> _cart = [];
 //1. add to cart
   void addToCart(Food food, List<FoodAddon> selectedAddons) {
     //cart alredy with same food
@@ -604,6 +613,23 @@ class Restorant extends ChangeNotifier {
     notifyListeners();
   }
 
+//6. update address
+  void updateAddress(String address) {
+    _deliveryAddress = address;
+    notifyListeners();
+  }
+
+  //adding card details
+  void addCardInfo(String cardNumber, String expiryDate, String cardHolderName,
+      String cvvCode) {
+    _cardInfo.add(CradDetails(
+        cardNumber: cardNumber,
+        expiryDate: expiryDate,
+        cardHolderName: cardHolderName,
+        cvvCode: cvvCode));
+    notifyListeners();
+  }
+
   //helpers
 //geneerate receipt
   String receipt() {
@@ -636,12 +662,23 @@ class Restorant extends ChangeNotifier {
     //items price
     receipt.writeln("Total Items : ${getTotalItemCount()}");
     receipt.writeln("Total Price : ${formatMoney(totalPrice())}");
+    //adding address
+    receipt.writeln();
+    receipt.writeln("Delivery address:$deliveryAddress");
+    //adding card
+    receipt.writeln();
+    for (CradDetails value in cardInfo) {
+      receipt.writeln("Name : " + value.cardHolderName);
+      receipt.writeln("Number : " + value.cardNumber);
+      receipt.writeln("Expiry : " + value.expiryDate);
+      receipt.writeln("CVV : " + value.cvvCode);
+    }
     return receipt.toString();
   }
 
 //format doubke value into money
   String formatMoney(double price) {
-    return "${price.toStringAsFixed(2)} Rs";
+    return NumberFormat.currency(locale: 'en_IN', symbol: '₹').format(price);
   }
 
 //format list of add on into string summery

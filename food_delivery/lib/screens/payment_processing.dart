@@ -1,3 +1,4 @@
+import 'package:food_delivery/database/firestore_db.dart';
 import 'package:food_delivery/utils/exports.dart';
 import 'package:food_delivery/widgets/my_receipt.dart';
 
@@ -9,13 +10,40 @@ class PaymentProcessing extends StatefulWidget {
 }
 
 class _PaymentProcessingState extends State<PaymentProcessing> {
+  //instance of db
+  FirestoreDb firestoreDb = FirestoreDb();
+  //add receipt to db when user come to pay
+  @override
+  void initState() {
+    super.initState();
+    String address = context.read<Restorant>().deliveryAddress;
+    String receipt = context.read<Restorant>().receipt();
+
+    List<CradDetails> cardInfo = context.read<Restorant>().cardInfo;
+    firestoreDb.saveOrdersToDb(receipt, address, cardInfo);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface(context),
       appBar: AppBar(
-        title: const Text("Delivery In Progress"),
         backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        leading: Consumer<Restorant>(
+          builder: (context, value, child) {
+            value.cart.clear();
+            return IconButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                    builder: (context) {
+                      return HomeScreen();
+                    },
+                  ), (Route<dynamic> route) => false);
+                },
+                icon: Icon(Icons.arrow_back_ios_new));
+          },
+        ),
       ),
       body: const SingleChildScrollView(
         child: Column(

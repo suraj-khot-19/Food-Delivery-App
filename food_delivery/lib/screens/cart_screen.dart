@@ -41,25 +41,26 @@ class _CartScreenState extends State<CartScreen> {
                     );
                   } else {
                     showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: const Text("Do you want to clear cart"),
-                            actions: [
-                              ElevatedButton(
-                                onPressed: () => Navigator.pop(context),
-                                child: const Text("Cancel"),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  restorant.clearCart();
-                                },
-                                child: const Text("Yes"),
-                              ),
-                            ],
-                          );
-                        });
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: const Text("Do you want to clear cart"),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("Cancel"),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                restorant.clearCart();
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Yes"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   }
                 },
                 icon: const Icon(
@@ -93,7 +94,8 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
               CustomButton(
-                label: "Go to checkout",
+                label:
+                    "Proceed to Buy ${restorant.formatMoney(restorant.totalPrice())}",
                 onTap: () {
                   if (userCart.isNotEmpty) {
                     Navigator.push(
