@@ -20,13 +20,28 @@ class CustomTextFeild extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(color: AppColors.primary(context)),
+          //regular
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.primary(context)),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.ternary(context)),
           ),
+          //error
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primary(context)),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.ternary(context)),
+          ),
         ),
+        validator: (value) {
+          if (value.toString().isEmpty || value!.isEmpty) {
+            return "please enter $hintText";
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }

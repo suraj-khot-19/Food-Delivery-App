@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:food_delivery/auth/auth_service.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -49,6 +50,21 @@ class _SettingScreenState extends State<SettingScreen> {
                   },
                 ),
               ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Divider(
+              color: AppColors.secoundry(context),
+            ),
+          ),
+          Text(AuthService().currentUser()!.email.toString()),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Divider(
+              color: AppColors.secoundry(context),
             ),
           ),
         ],

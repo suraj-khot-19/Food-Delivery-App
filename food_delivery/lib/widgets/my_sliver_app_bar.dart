@@ -30,6 +30,9 @@ class MySliverAppBar extends StatelessWidget {
             icon: Consumer<Restorant>(
           builder: (context, value, child) {
             return Badge(
+              backgroundColor: Colors.red,
+              textColor: AppColors.surface(context),
+              isLabelVisible: value.cart.isNotEmpty,
               label: Text(value.cart.length.toString()),
               child: const Icon(
                 Icons.shopping_cart,
