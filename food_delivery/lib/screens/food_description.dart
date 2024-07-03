@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:food_delivery/utils/exports.dart';
 
@@ -51,17 +52,33 @@ class _FoodDescriptionState extends State<FoodDescription> {
                       .map(
                         (images) => Builder(
                           builder: (context) {
-                            return Image.asset(
-                              images,
+                            return CachedNetworkImage(
+                              imageUrl: images,
                               width: double.infinity,
                               fit: BoxFit.cover,
+                              //placeholder
+                              placeholder: (context, url) {
+                                return Container(
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.primary(context),
+                                    ),
+                                  ),
+                                );
+                              },
+                              //error
+                              errorWidget: (context, url, error) {
+                                return Container(
+                                  child:
+                                      Center(child: Icon(Icons.error_outline)),
+                                );
+                              },
                             );
                           },
                         ),
                       )
                       .toList(),
                   options: CarouselOptions(
-                    autoPlayCurve: Curves.fastLinearToSlowEaseIn,
                     height: 600,
                     viewportFraction: 1,
                     autoPlay: true,

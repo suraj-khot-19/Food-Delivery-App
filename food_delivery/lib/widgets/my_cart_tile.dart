@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:food_delivery/models/cart_item.dart';
 import 'package:food_delivery/screens/food_description.dart';
 import 'package:food_delivery/utils/exports.dart';
@@ -33,14 +34,35 @@ class MyCartTile extends StatelessWidget {
                       );
                     },
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        cartItem.food.imgPath,
-                        height: 100,
-                        width: 100,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        borderRadius: BorderRadius.circular(8),
+                        child: CachedNetworkImage(
+                          imageUrl: cartItem.food.imgPath,
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
+                          //error
+                          errorWidget: (context, url, error) {
+                            return Container(
+                              height: 100,
+                              width: 100,
+                              child: Center(
+                                child: Icon(Icons.error_outline),
+                              ),
+                            );
+                          },
+                          //palceholder
+                          placeholder: (context, url) {
+                            return Container(
+                              height: 100,
+                              width: 100,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.primary(context),
+                                ),
+                              ),
+                            );
+                          },
+                        )),
                   ),
                   const AddHorizontalSpace(width: 10),
                   //name

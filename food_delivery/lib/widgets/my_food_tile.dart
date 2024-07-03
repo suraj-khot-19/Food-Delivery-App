@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:food_delivery/utils/exports.dart';
 
 class MyFoodTile extends StatelessWidget {
@@ -41,12 +42,40 @@ class MyFoodTile extends StatelessWidget {
                 const AddHorizontalSpace(width: 5),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    food.imgPath,
+                  child: CachedNetworkImage(
+                    imageUrl: food.imgPath,
                     height: 150,
                     width: 130,
                     fit: BoxFit.cover,
+                    //usage
+                    placeholder: (context, url) {
+                      return Container(
+                        height: 60,
+                        width: 60,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primary(context),
+                          ),
+                        ),
+                      );
+                    },
+                    //error usage
+                    errorWidget: (context, url, error) {
+                      return Container(
+                        height: 150,
+                        width: 130,
+                        child: Center(
+                          child: Icon(Icons.error_outline),
+                        ),
+                      );
+                    },
                   ),
+                  // child: Image.network(
+                  //   food.imgPath,
+                  //   height: 150,
+                  //   width: 130,
+                  //   fit: BoxFit.cover,
+                  // ),
                 ),
               ],
             ),
