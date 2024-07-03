@@ -1,5 +1,3 @@
-
-
 <p>Food Delivery App with-
   <br>
   1.Backend using Firebase/Firestore.
@@ -40,7 +38,6 @@
     </td>
   </tr>
 
-
 <tr>
     <td>
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff1_dark.jpg" alt="img">
@@ -49,7 +46,6 @@
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff1_light.jpg" alt="img">
     </td>
   </tr>
-
 
 <tr>
     <td>
@@ -69,7 +65,6 @@
     </td>
   </tr>
 
-
 <tr>
     <td>
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff4_dark.jpg" alt="img">
@@ -78,7 +73,6 @@
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff4_light.jpg" alt="img">
     </td>
   </tr>
-
 
 <tr>
     <td>
@@ -89,8 +83,6 @@
     </td>
   </tr>
 
-
-
 <tr>
     <td>
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff6_dark.jpg" alt="img">
@@ -99,7 +91,6 @@
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff6_light.jpg" alt="img">
     </td>
   </tr>
-
 
 <tr>
     <td>
@@ -119,8 +110,6 @@
     </td>
   </tr>
 
-
-
 <tr>
     <td>
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff9_dark.jpg" alt="img">
@@ -129,7 +118,6 @@
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff9_light.jpg" alt="img">
     </td>
   </tr>
-
 
 <tr>
     <td>
@@ -140,7 +128,6 @@
     </td>
   </tr>
 
-
 <tr>
     <td>
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff11_dark.jpg" alt="img">
@@ -149,7 +136,6 @@
       <img src="https://github.com/suraj-khot-19/img/blob/main/ff11_light.jpg" alt="img">
     </td>
   </tr>
-
 
 <tr>
     <td>
@@ -187,6 +173,4 @@
     </td>
   </tr>
 
-
-  
 </table>
