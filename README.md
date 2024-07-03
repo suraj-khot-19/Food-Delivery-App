@@ -89,6 +89,17 @@
 
 <table>
   <th>
+      DELETE FOOD FROM CART
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_deletefood.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
       Clear All Cart
     </th>
   <tr>
@@ -131,6 +142,16 @@
 
   <th>Dark Theme</th>
   <th>Light Theme</th>
+
+
+<tr>
+    <td>
+      <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/IMG_20240703_113924.jpg" alt="img">
+    </td>
+    <td>
+      <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/IMG_20240703_113924.jpg" alt="img">
+    </td>
+  </tr>
 
   <tr>
     <td>
