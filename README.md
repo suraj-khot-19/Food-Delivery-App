@@ -5,7 +5,128 @@
   2.Frontend using Flutter/Dart
 </p>
 <br>
+<p> video output</p>
+<br>
 
+<table>
+  <th>
+      Register
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_register.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+      Login
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_login.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+
+<table>
+  <th>
+      Home
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_home.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+      Update Address
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_updateaddress.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+
+<table>
+  <th>
+      Dark Mode
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_darkmode.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+      Description 
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_description.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+     Food Add to Cart
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_addtocart.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <th>
+      Clear All Cart
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_clearcart.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+
+<table>
+  <th>
+      Order Food
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_order.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+
+<table>
+  <th>
+      Logout
+    </th>
+  <tr>
+    <td>
+    <img src="https://github.com/suraj-khot-19/img/blob/main/food-delivery/food_logout.gif" alt="vid">
+  </td>
+  </tr>
+</table>
+
+
+
+<br>
+<p>image output </p>
+<br>
 <table border="solid 4 px">
 
   <th>Dark Theme</th>
